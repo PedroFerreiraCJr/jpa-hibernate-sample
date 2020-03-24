@@ -11,7 +11,9 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import br.com.dotofcodex.jpa_hibernate_sample.types.BookType;
@@ -43,12 +45,22 @@ public class Book {
 	@Column(name = "publish_date", nullable = true)
 	private Date publishDate;
 
-	@OneToMany(mappedBy = "book", fetch = FetchType.EAGER)
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(
+		name = "books_authors",
+		joinColumns = @JoinColumn(name = "book_id", referencedColumnName = "id"),
+		inverseJoinColumns = @JoinColumn(name = "author_id", referencedColumnName = "id")
+	)
 	private Set<Author> authors;
 
-	@OneToMany(mappedBy = "book", fetch = FetchType.EAGER)
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(
+		name = "books_revisors",
+		joinColumns = @JoinColumn(name = "book_id", referencedColumnName = "id"),
+		inverseJoinColumns = @JoinColumn(name = "revisor_id", referencedColumnName = "id")
+	)
 	private Set<Revisor> revisors;
-
+	
 	public Book() {
 		super();
 	}
