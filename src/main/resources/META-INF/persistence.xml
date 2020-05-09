@@ -19,6 +19,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/jpa_hibernate_sample" />
       <property name="javax.persistence.jdbc.user" value="root" />
       <property name="javax.persistence.jdbc.password" value="pedro" />
+      <property name="javax.persistence.sharedCache.mode" value="ENABLE_SELECTIVE"/>
       <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect" />
       <property name="hibernate.show_sql" value="true" />
       <property name="hibernate.format_sql" value="true" />
